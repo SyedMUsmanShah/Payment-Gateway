@@ -32,7 +32,7 @@ class SubscriptionController extends Controller
         $plans = $this->retrievePlans();
         $user = Auth::user();
 
-        return view('seller.pages.subscribe', [
+        return view('subscribe', [
             'user'=>$user,
             'intent' => $user->createSetupIntent(),
             'plans' => $plans

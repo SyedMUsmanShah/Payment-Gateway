@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -145,7 +146,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend', 'prefix' => 'admin'
     Route::patch("$module_name/{id}/unblock", ['as' => "$module_name.unblock", 'uses' => "$controller_name@unblock", 'middleware' => ['permission:block_users']]);
 });
 
-Route::get('/subscribe', 'SubscriptionController@showSubscription');
-      Route::post('/subscribe', 'SubscriptionController@processSubscription');
+Route::get('/subscribe', [SubscriptionController::class, 'showSubscription'])->name('subscribe');
+      Route::post('/subscribe', [SubscriptionController::class, 'processSubscription']);
       // welcome page only for subscribed users
-      Route::get('/welcome', 'SubscriptionController@showWelcome')->middleware('subscribed');
+      Route::get('/welcome', [SubscriptionController::class, 'showWelcome'])->middleware('subscribed');

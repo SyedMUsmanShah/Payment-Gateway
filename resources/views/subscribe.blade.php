@@ -31,7 +31,7 @@
   </head>
   <body>
 
-    <form action="/seller/subscribe" method="POST" id="subscribe-form">
+    <form action="{{ route('subscribe') }}" method="POST" id="subscribe-form">
         <div class="form-group">
             <div class="row">
                 @foreach($plans as $plan)
